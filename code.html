@@ -87,22 +87,68 @@
         <div class="col-12 col-lg-8">
           <pre class="line-numbers">
                 <code class="language-js">
-                    function displayMessage(){
+                  function getValues() {
+  // get the value from the page
+  let startValue = document.getElementById("startValue").value;
+  let endValue = document.getElementById("endValue").value;
+
+  // parse the values in to intengers
+  startValue = parseInt(startValue);
+  endValue = parseInt(endValue);
+
+  if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+    // generate the numbers based on user input
+    let numbers = generateFizzBuzz(startValue, endValue);
+
+    // display results on page
+    displayFizzBuzz(numbers);
+  } else {
+    swal.fire({
+      icon: "error",
+      Title: "Oops....",
+      text: "Only integers are allow for Hundo!",
+    });
+  }
+}
+
+function generateFizzBuzz(startValue, endValue) {
+  let numbers = [];
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 == 0 && i % 5 == 0) {
+    numbers.push ("Fizz Buzz");
+  } else if (i % 3 == 0) {
+    numbers.push  ("Fizz");
+  } else if (i % 5 == 0) {
+    numbers.push ("Buzz");
+  } else {
+    numbers.push (i);
+  }
+}
   
-                 let msg =  document.getElementById("message").value;
 
+  return numbers;
+}
 
-                alert(msg);
+function displayFizzBuzz(numbers) {
+    let templateRows = "";
+ for ( let i = 0; i < numbers.length; i++){
+    let number = numbers[i];
+    templateRows += `<tr><td>${number}</td></tr>`;
+ }
 
-                }
+ 
+
+  document.getElementById("results").innerHTML = templateRows;
+}
+
                 </code>
             </pre>
         </div>
         <!---Code Docs-->
         <div class="col-12 col-lg-4">
-          <p>The code is structured in one funtion</p>
-          <h5>displayMessage</h5>
-          <p>Prints out the message</p>
+          <p>This code is structured in one loop.</p>
+          <h5>FizzBuzz</h5>
+          <p>Shows numbers 1-100, but with a twist! Every number that can be divided by 3 will show Fizz. Every number that can be divide by 5 will show Buzz. Every number that can be divide by 3 and 5 will show Fizz Buzz.</p>
         </div>
       </div>
     </main>
