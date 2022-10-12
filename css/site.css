@@ -88,3 +88,15 @@ footer{
     max-width: 350px;
 
 }
+
+td{
+    color:gray;
+    padding:2px;
+    text-align:center;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+
+.number{
+    color: #ff6666;
+}
