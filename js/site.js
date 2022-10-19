@@ -25,23 +25,28 @@ function getValues() {
 }
 
 function generateFizzBuzz(startValue, endValue, customValue) {
-  let numbers = [];
-  let cap = customValue;
-for (let i = 1; i <= cap; i++) {
-  if (i % 3 == 0 && i % 5 == 0) {
-    numbers.push ("Fizz Buzz");
-  } else if (i % 3 == 0) {
-    numbers.push  ("Fizz");
-  } else if (i % 5 == 0) {
-    numbers.push ("Buzz");
-  } else {
-    numbers.push (i);
-  }
-}
   
+    let numbers = [];
+    let isFizz = false;
+    let isBuzz = false;
+    let cap = customValue;
 
-  return numbers;
-}
+    for (let i = 1; i <= cap; i++) {
+      isFizz = i % startValue == 0;
+      isBuzz = i % endValue == 0;
+      if (isBuzz && isFizz) {
+        numbers.push("FizzBuzz");
+      } else if (isFizz) {
+        numbers.push("Fizz");
+      } else if (isBuzz) {
+        numbers.push("Buzz");
+      } else {
+        numbers.push(i);
+      }
+    }
+    return numbers;
+  }
+
 
 function displayFizzBuzz(numbers) {
     let templateRows = "";
